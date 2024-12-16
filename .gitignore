@@ -1,0 +1,31 @@
+
+
+# Ignore environment variable files
+.env
+/env
+env
+
+# Ignore coverage directory
+coverage/
+
+# Ignore temporary files
+*.tmp
+
+# Ignore Django migrations
+*/migrations/
+
+# Ignore SQLite database files
+*.sqlite3
+
+# Ignore media files
+media/
+
+# Ignore static files
+staticfiles/
+
+# Ignore pycache directories
+__pycache__/
+
+# Ignore local settings
+local_settings.py
+
