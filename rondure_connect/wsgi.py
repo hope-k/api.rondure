@@ -14,7 +14,7 @@ from django.core.wsgi import get_wsgi_application
 
 environment = config("ENVIRONMENT", default="production")  # Default to production
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rondure_connect.settings.production")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"rondure_connect.settings.{environment}")
 
 application = get_wsgi_application()
 app = application
