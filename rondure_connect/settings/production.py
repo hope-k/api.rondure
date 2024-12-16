@@ -17,10 +17,10 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="")  #
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME", default="defaultdb"),  # Replace with your databasename
-        "USER": config("DB_USER", default="avnadmin"),  # Replace with your PostgreSQL user
+        "NAME": config("DB_NAME", default=""),  # Replace with your databasename
+        "USER": config("DB_USER", default=""),  # Replace with your PostgreSQL user
         "PASSWORD": config("DB_PASSWORD", default=""),  # Replace with your PostgreSQL password
-        "HOST": config("DB_HOST", default="rondure-hopekumordzie.d.aivencloud.com"),  # Or the hostname of your PostgreSQL server
-        "PORT": config("DB_PORT", default="28932"),  # Default PostgreSQL port
+        "HOST": config("DB_HOST", default=""),  # Or the hostname of your PostgreSQL server
+        "PORT": config("DB_PORT", default=""),  # Default PostgreSQL port
     }
 }
