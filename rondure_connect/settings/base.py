@@ -69,7 +69,7 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         "EMAIL_AUTHENTICATION": True,
-        "SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT": True,
+        "SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT": False,
         "APP": {
             "client_id": config("GOOGLE_CLIENT_ID", default=""),
             "secret": config("GOOGLE_CLIENT_SECRET", default=""),
