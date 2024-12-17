@@ -41,6 +41,10 @@ None
 APPEND_SLASH = False
 AUTH_USER_MODEL = "user_profile.UserProfile"
 DRF_STANDARDIZED_ERRORS = {"ENABLE_IN_DEBUG_FOR_UNHANDLED_EXCEPTIONS": True}
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://rondure.vercel.app"]
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://rondure.vercel.app"]
 # ----
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
