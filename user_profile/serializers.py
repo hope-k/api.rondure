@@ -56,7 +56,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         return email
 
     def validate_password1(self, password):
-        return super().validate_password1(password)
+        return get_adapter().clean_password(password)
 
     def save(self, request):
         return super().save(request)
