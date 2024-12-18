@@ -4,6 +4,7 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError as DjangoValidationError
+from allauth.account.models import EmailAddress
 
 
 try:
@@ -17,9 +18,18 @@ except ImportError:
 
 class CustomUserDetailsSerializer(UserDetailsSerializer):
     phone_number = serializers.CharField()
+    is_email_verified = serializers.SerializerMethodField()
 
     class Meta(UserDetailsSerializer.Meta):
-        fields = UserDetailsSerializer.Meta.fields + ("phone_number",)
+        fields = UserDetailsSerializer.Meta.fields + (
+            "phone_number",
+            "is_email_verified",
+        )
+
+    def get_is_email_verified(self, obj):
+        # Check if the user's email is verified
+        email_address = EmailAddress.objects.filter(user=obj, email=obj.email).first()
+        return email_address.verified if email_address else False
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -44,6 +54,15 @@ class CustomRegisterSerializer(RegisterSerializer):
                 )
 
         return email
+
+    def validate_password1(self, password):
+        return super().validate_password1(password)
+
+    def save(self, request):
+        return super().save(request)
+
+    def validate(self, data):
+        return super().validate(data)
 
     def get_cleaned_data(self):
         return {
