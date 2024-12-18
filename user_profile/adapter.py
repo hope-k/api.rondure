@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 class CustomAccountAdapter(DefaultAccountAdapter):
     def get_email_confirmation_url(self, request, emailconfirmation):
         current_site = Site.objects.get_current()
-        print('CURRENT SITE: ', current_site)
+        print("CURRENT SITE: ", current_site)
 
         # Set your frontend URL here
         return f"{current_site}/auth/verify-email/?confirm-email-token={emailconfirmation.key}"
@@ -14,5 +14,7 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         user = super().save_user(request, user, form, commit)
         data = form.cleaned_data
         user.phone_number = data.get("phone_number")
-        user.save()
+        # Save the user if commit is True
+        if commit:
+            user.save()
         return user
