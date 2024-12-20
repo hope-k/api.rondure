@@ -4,7 +4,7 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from allauth.account.models import EmailAddress
-
+from dj_rest_auth.registration.serializers import SocialLoginSerializer
 
 try:
     from allauth.account import app_settings as allauth_account_settings
