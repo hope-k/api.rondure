@@ -26,28 +26,6 @@ class CustomAccountAdapter(DefaultAccountAdapter):
 
 
 class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
+    # use this method if you want to link social acc to local acc
     def pre_social_login(self, request, sociallogin):
-
-        # Get the email from the social login
-        email = sociallogin.account.extra_data.get("email")
-
-        if email:
-            try:
-                # Check if the email exists in the database
-                existing_email = EmailAddress.objects.get(email=email)
-
-                if existing_email.user:
-                    # Check if the email is already linked to a social account
-                    if not existing_email.user.socialaccount_set.filter(
-                        provider=sociallogin.account.provider
-                    ).exists():
-
-                        raise ValidationError(
-                            detail=(
-                                "An account already exists with this email address but is not linked to this social account. "
-                                "Please sign in using your email and password"
-                            )
-                        )
-            except EmailAddress.DoesNotExist:
-                # If no existing email is found, allow signup
-                pass
+        pass

@@ -51,13 +51,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-SOCIALACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_ADAPTER = "user_profile.adapter.CustomAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "user_profile.adapter.CustomSocialAccountAdapter"
 
 CSRF_COOKIE_HTTPONLY = True  # Ensures cookies are HttpOnly
 CSRF_COOKIE_SECURE = True
-SOCIALACCOUNT_AUTO_SIGNUP = True
 # ------
 
 
@@ -67,7 +65,7 @@ SOCIALACCOUNT_PROVIDERS = {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
-        "EMAIL_AUTHENTICATION": True,
+   
         "APP": {
             "client_id": config("GOOGLE_CLIENT_ID", default=""),
             "secret": config("GOOGLE_CLIENT_SECRET", default=""),
@@ -79,7 +77,6 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         # use key 'APP' not 'APPS'
-        "EMAIL_AUTHENTICATION": True,
         "APP": {
             "client_id": config("FACEBOOK_CLIENT_ID", default=""),
             "secret": config("FACEBOOK_CLIENT_SECRET", default=""),
